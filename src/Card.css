@@ -1,0 +1,78 @@
+:root {
+  --card-height: 26vw;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+.card {
+  width: var(--card-size);
+  height: var(--card-size);
+  position: relative;
+  margin: 0 50px;
+  perspective: 1000px;
+}
+
+
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  position: relative;
+  margin: 0 50px;
+  perspective: 1000px;
+  overflow: hidden; /* Hide content that overflows the card */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background-color: green;
+}
+
+.card-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transform: rotateY(180deg);
+}
+
+.card-back-title {
+  width: 100%;
+  background-color: rgba(0,0,0,0.7);
+  color: #d4af37;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.card-image {
+  width: 100%;
+  height: calc(100% - 50px); /* Subtract the height of the title */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

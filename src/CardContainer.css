@@ -1,0 +1,12 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.card-wrapper {
+  display: flex;
+  gap: 2%; /* Adjust this value to control the spacing between cards */
+}

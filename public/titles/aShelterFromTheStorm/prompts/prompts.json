@@ -1,0 +1,97 @@
+[
+  {
+    "ID": "001",
+    "Title": "A Shelter from the Storm",
+    "Font": "Cormorant Garamond",
+    "Font Size": 26,
+    "Text Color": "#4B0082",
+    "Card Background": "#FFFFFF",
+    "Dimensions": "5\" x 7\"",
+    "ArtPrompt": {
+      "Title": "A shelter from the storm",
+      "Text": "Create a pen and pencil illustration of a shelter from the storm inspired by classic RPG core rulebook aesthetics. The shelter should be depicted as a universal and archetypal representation of refuge and safety amidst adverse weather conditions. The scene should evoke a sense of comfort and protection, capturing the essence of finding solace in a fantasy setting. Use a detailed, hand-drawn style that complements traditional RPG art, and include hints of the surrounding landscape to highlight the contrast between the shelter and the storm.",
+      "Type": "General",
+      "Keywords": ["pen and pencil", "illustration", "RPG core rulebook", "refuge", "safety", "comfort", "protection", "solace", "fantasy", "detailed", "hand-drawn", "landscape"]
+    },
+    "DesignReasoning": "The card's design elements, including the Cormorant Garamond font and indigo color, were chosen to complement the art inspired by the prompt. The font's elegant, fantasy-like style is fitting for the depicted scene of calm and refuge amidst a storm, and the indigo color of the text against the white background offers a good contrast that aligns with the stormy theme of the card."
+  },
+  {
+    "ID": "002",
+    "Title": "A Shelter from the Storm",
+    "Font": "Cormorant Garamond",
+    "Font Size": 26,
+    "Text Color": "#4B0082",
+    "Card Background": "#FFFFFF",
+    "Dimensions": "5\" x 7\"",
+    "ArtPrompt": {
+      "Title": "A shelter from the storm",
+      "Text": "A Shelter from the Storm: Create a semi-abstract watercolor painting, drawing inspiration from the atmospheric art styles of J.M.W. Turner and the dreamlike compositions of Odilon Redon. Imagine a solitary structure standing resilient amidst a swirling tempest, its warm, inviting glow cutting through the storm's icy grasp. The surrounding landscape should be rendered in soft, muted colors, while the shelter itself stands out with a beacon-like brightness, serving as a symbol of safety and refuge. The storm, despite its intensity, should not evoke a sense of dread, but rather, the triumph of finding shelter amidst adversity. This image should encapsulate the essence of seeking and finding refuge - a universal experience across various RPG genres.",
+      "Type": "J.M.W. Turner and Odilon Redon",
+      "Keywords": ["semi-abstract", "watercolor", "J.M.W. Turner", "Odilon Redon", "structure", "storm", "resilience", "tempest", "warm", "glow", "landscape", "muted colors", "beacon", "safety", "refuge", "dread", "triumph", "adversity", "refuge", "RPG"]
+    },
+    "DesignReasoning": "The card's design elements, including the Cormorant Garamond font and indigo color, were chosen to complement the art inspired by the prompt. The font's elegant, fantasy-like style is fitting for the depicted scene of calm and refuge amidst a storm, and the indigo color of the text against the white background offers a good contrast that aligns with the stormy theme of the card."
+  },
+  {
+    "ID": "003",
+    "Title": "A Shelter from the Storm",
+    "Font": "Cormorant Garamond",
+    "Font Size": 26,
+    "Text Color": "#4B0082",
+    "Card Background": "#FFFFFF",
+    "Dimensions": "5\" x 7\"",
+    "ArtPrompt": {
+      "Title": "A shelter from the storm",
+      "Text": "A Shelter from the Storm: Create a semi-abstract watercolor painting, drawing inspiration from the delicate and expressive art styles of Egon Schiele and Katsushika Hokusai. Picture a scene from a close-up viewpoint of someone looking out from the shelter towards the storm. The shelter provides a frame, a window to the storm, its interior glowing warmly, emphasizing the protection it offers. The stormy surroundings are depicted in vibrant, dynamic strokes, capturing the force of the wind and the driving rain. A tree or a flag nearby bending under the gusts could portray the intensity of the storm. Despite the tempestuous scene outside, the overall feeling should be one of safety and tranquility. This image should encapsulate the essence of finding refuge in the midst of a storm - a universal experience across various RPG genres.",
+      "Type": "Egon Schiele and Katsushika Hokusai",
+      "Keywords": ["semi-abstract", "watercolor", "Egon Schiele", "Katsushika Hokusai", "shelter", "storm", "viewpoint", "frame", "window", "glow", "protection", "surroundings", "vibrant", "dynamic", "wind", "rain", "tree", "flag", "gusts", "intensity", "safety", "tranquility", "refuge", "RPG"]
+    },
+    "DesignReasoning": "The card's design elements, including the Cormorant Garamond font and indigo color, were chosen to complement the art inspired by the prompt. The font's elegant, fantasy-like style is fitting for the depicted scene of calm and refuge amidst a storm, and the indigo color of the text against the white background offers a good contrast that aligns with the stormy theme of the card."
+  },
+  {
+    "ID": "004",
+    "Title": "A Shelter from the Storm",
+    "Font": "Cormorant Garamond",
+    "Font Size": 26,
+    "Text Color": "#4B0082",
+    "Card Background": "#FFFFFF",
+    "Dimensions": "5\" x 7\"",
+    "ArtPrompt": {
+      "Text": "Envision an over-the-shoulder, digital painting illustrating an abstract, fantasy-styled map that represents 'A Shelter from the Storm.' Drawn on aged parchment, the map sprawls across a heavy wooden table, under the soft glow of a single candle. Diverse geographical elements like rolling hills, looming mountains, mysterious forests, and a safe haven - symbolizing 'A Shelter from the Storm,' are meticulously marked. The map's vague paths, represented by dotted lines and abstract symbols, invite interpretation and storytelling. The mood is accentuated by the use of a saturated, yet shadowy color palette, reminiscent of a stormy night, yet a beacon of hope radiates from the location of the 'Shelter,' a subtle hint towards safety. This high-definition digital art piece draws inspiration from the works of Neil Gaiman and The Witcher series and provides a cinematic, epic viewpoint. It beckons viewers to ponder upon the possible stories associated with the 'Shelter,' stimulating imagination, offering geographical interpretation, and fueling narrative speculation. This piece is perfect for use in DnD maps, Map Patreon, Inkarnate, Dungeondraft, and Roll20. Prepare to step into a realm of adventure where each symbol and path tells a tale, and the 'Shelter from the Storm' waits to be discovered",
+      "Type": "Map",
+      "Keywords": ["over-the-shoulder", "digital painting", "abstract", "fantasy", "map", "Shelter from the Storm", "parchment", "wooden table", "candle", "geographical elements", "hills", "mountains", "forests", "safe haven", "paths", "dotted lines", "symbols", "interpretation", "storytelling", "color palette", "stormy night", "beacon of hope", "Neil Gaiman", "The Witcher series", "cinematic", "epic", "DnD maps", "Map Patreon", "Inkarnate", "Dungeondraft", "Roll20"]
+    },
+    "DesignReasoning": "The card's design elements, including the Cormorant Garamond font and indigo color, were chosen to complement the art inspired by the prompt. The font's elegant, fantasy-like style is fitting for the depicted scene of calm and refuge amidst a storm, and the indigo color of the text against the white background offers a good contrast that aligns with the stormy theme of the card."
+  },
+  {
+    "ID": "005",
+    "Title": "A Shelter from the Storm",
+    "Font": "Cormorant Garamond",
+    "Font Size": 26,
+    "Text Color": "#4B0082",
+    "Card Background": "#FFFFFF",
+    "Dimensions": "5\" x 7\"",
+    "ArtPrompt": {
+      "Title": "A Shelter from the Storm: graphic novel",
+      "Text": "Create a watercolor painting mix with digital art, taking inspiration from the vivid yet grounded art styles of Alan Lee and Yoshitaka Amano. Visualize a scene from the immediate perspective of someone within a shelter looking out towards the storm. The interior of the shelter forms a comforting frame, with the glow of a fire or a lantern emphasizing the warmth and protection it offers. The storm outside should be depicted with dynamic strokes of watercolor, portraying the force of the wind, driving rain, and flashing lightning. Nearby elements such as a wind-buffeted tree or a fluttering flag can be used to depict the storm's power. Despite the tempest outside, the overall impression should be one of security and tranquility. This image should capture the essence of finding refuge amidst a storm, a universal experience in various RPG genres.",
+      "Type": "Alan Lee and Yoshitaka Amano",
+      "Keywords": ["watercolor", "digital art", "Alan Lee", "Yoshitaka Amano", "shelter", "storm", "perspective", "frame", "glow", "fire", "lantern", "protection", "dynamic strokes", "wind", "rain", "lightning", "tree", "flag", "tempest", "security", "tranquility", "refuge", "RPG", "ArtStation", "Call of Cthulu", "Unreal Engine", "ultra detail", "4k", "GOT"]
+    },
+    "DesignReasoning": "The card's design elements, including the Cormorant Garamond font and indigo color, were chosen to complement the art inspired by the prompt. The font's elegant, fantasy-like style is fitting for the depicted scene of calm and refuge amidst a storm, and the indigo color of the text against the white background offers a good contrast that aligns with the stormy theme of the card."
+  },
+  {
+    "ID": "006",
+    "Title": "A Shelter from the Storm",
+    "Font": "Goudy Old Style",
+    "Font Size": 28,
+    "Text Color": "#3CB371",
+    "Card Background": "#FFFFFF",
+    "Dimensions": "5\" x 7\"",
+    "ArtPrompt": {
+      "Title": "A Shelter from the Storm: Joker Card",
+      "Text": "Craft a visual metaphor of a 'Shelter from the Storm' drawing inspiration from the whimsical, dreamlike world of Lewis Carroll's Alice in Wonderland. Use an optical illusion art style that challenges the viewer's perception. The card should feature a surreal landscape where a storm is depicted in unexpected ways, perhaps as an ocean wave curling over a house, or a literal tempest in a teapot. The shelter is an unexpected haven, like an oversized mushroom or a shoe house. Despite the fantastical situation, the card should convey a comforting sense of safety and protection, embodying the essence of finding refuge in the most peculiar places.",
+      "Type": "Optical Illusion and Whimsical",
+      "Keywords": ["visual metaphor", "whimsical", "dreamlike", "Lewis Carroll", "Alice in Wonderland", "optical illusion", "surreal", "landscape", "storm", "ocean wave", "tempest in a teapot", "shelter", "mushroom", "shoe house", "safety", "protection", "refuge"]
+    },
+    "DesignReasoning": "Goudy Old Style font was chosen for its vintage charm and whimsy, fitting for the Carroll-inspired art. A larger size is used to draw attention to the title. The sea green color hints at the surreal ocean wave storm in the art. The font is placed at the bottom to allow more visual focus on the optical illusion art."
+  }
+]
