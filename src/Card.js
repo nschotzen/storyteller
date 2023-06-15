@@ -12,7 +12,7 @@ const Card = ({ url, title, fontName, fontSize, fontColor }) => {
   function splitCamelCaseText(input) {
     return input
       .replace(/([A-Z])/g, " $1")
-      .replace(/^./, function(str){ return str.toUpperCase(); })
+      .replace(/^./, function (str) { return str.toUpperCase(); })
   }
 
 
@@ -28,11 +28,13 @@ const Card = ({ url, title, fontName, fontSize, fontColor }) => {
             {/* Static content goes here */}
           </div>
         </div>
-        <div className="card-face card-back" style={{backgroundImage: `url(http://localhost:5001${url})`}}>
-          <div className="card-back-title" style={{color: fontColor, fontFamily: fontName, fontSize: fontSize}}>
+        <div className="card-face card-back">
+          <div className="card-image" style={{ backgroundImage: `url(http://localhost:5001${url})` }}></div>
+          <div className="card-back-title" style={{ color: fontColor, fontFamily: fontName, fontSize: fontSize }}>
             {splitCamelCaseText(title)}
           </div>
         </div>
+
       </div>
     </div>
   );

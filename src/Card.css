@@ -1,6 +1,6 @@
 :root {
-  --card-height: 26vw;
-  --card-width: calc(var(--card-height) / 1.5);
+  --card-height: 24vw;
+  --card-width: calc(var(--card-height) / 1.3);
 }
 
 .card {
@@ -65,10 +65,10 @@
 
 .card-image {
   width: 100%;
-  height: calc(100% - 50px); /* Subtract the height of the title */
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .card-image {
