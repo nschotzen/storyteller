@@ -1,5 +1,6 @@
 .card-container {
   display: flex;
+  flex-direction: column; /* Add this line */
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -9,4 +10,28 @@
 .card-wrapper {
   display: flex;
   gap: 2%; /* Adjust this value to control the spacing between cards */
+}
+
+.card.selected {
+  border: 3px solid gold;
+}
+
+.prefix-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  font-family: 'Arial', sans-serif;
+  background: #f0f0f0;
+  padding: 20px 0;
+}
+
+.prefix {
+  flex: 0 1 calc(33.333% - 20px);
+  background: #fff;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  color: #333;
 }

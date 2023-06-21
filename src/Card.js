@@ -2,12 +2,22 @@
 import React, { useState } from 'react';
 import './Card.css'; // Import the CSS
 
-const Card = ({ url, title, fontName, fontSize, fontColor }) => {
+const Card = ({ id, url, title, fontName, fontSize, fontColor, selected, selectCard, setSelectedCard }) => {
   const [isFlipped, setIsFlipped] = useState(true); // initial state is false to show the front side of the card
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
+
+  const handleSelect = () => {
+    setSelectedCard(id);
+  };
+
+
+  const handleClick = (e) => {
+    e.stopPropagation();  // prevent the flip action when clicking to select a card
+    selectCard(id);
+  }
 
   function splitCamelCaseText(input) {
     return input
@@ -15,11 +25,11 @@ const Card = ({ url, title, fontName, fontSize, fontColor }) => {
       .replace(/^./, function (str) { return str.toUpperCase(); })
   }
 
-
   return (
     <div
-      className={`card${isFlipped ? ' flipped' : ''}`}
-      onClick={handleFlip}
+      className={`card${isFlipped ? ' flipped' : ''}${selected ? ' selected' : ''}`}
+      onClick={handleSelect}
+      onDoubleClick={handleClick} // double click to select a card
     >
       <div className="card-inner">
         <div className="card-face card-front">
@@ -34,7 +44,6 @@ const Card = ({ url, title, fontName, fontSize, fontColor }) => {
             {splitCamelCaseText(title)}
           </div>
         </div>
-
       </div>
     </div>
   );
