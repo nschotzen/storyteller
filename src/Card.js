@@ -40,6 +40,8 @@ const Card = ({ id, url, title, fontName, fontSize, fontColor, selected, selectC
         </div>
         <div className="card-face card-back">
           <div className="card-image" style={{ backgroundImage: `url(http://localhost:5001${url})` }}></div>
+          {/* <div className="card-image" style={{ backgroundImage: `url(${url})` }}></div> */}
+
           <div className="card-back-title" style={{ color: fontColor, fontFamily: fontName, fontSize: fontSize }}>
             {splitCamelCaseText(title)}
           </div>

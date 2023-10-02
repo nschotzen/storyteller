@@ -28,6 +28,37 @@ const CardContainer = () => {
     }
   };
 
+  const concludeScene = async () => {
+    if (isLoading) return;  // Avoid sending multiple requests at the same time
+
+    setLoading(true);
+    setError(null);
+
+    try {
+        const response = await fetch(`${SERVER}/api/generateTextures`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ userText, selectedCard })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setCards(data.cards);
+        // Handle the response data here (update state or perform other actions)
+
+    } catch (error) {
+        setError(error.message);
+    } finally {
+        setLoading(false);
+    }
+};
+
+
   // Add this function
   const getPrefixes = async (n = 10) => {
     try {
@@ -63,8 +94,9 @@ const CardContainer = () => {
         throw new Error(`HTTP error ${response.status}`);
       }
       
-      const data = await response.json();
-      // Handle the response data here...
+      const {prefixes} = await response.json();
+      console.log('DATA:', prefixes);
+      setPrefixes(prefixes);
 
     } catch (error) {
       setError(error.message);
@@ -113,6 +145,9 @@ const CardContainer = () => {
       <TextArea className="send-button" text={userText} setText={setUserText} />
       <button onClick={() => sendText(selectedCard)} disabled={isLoading || !userText.trim()}>
         {isLoading ? 'Sending...' : 'Send'}
+      </button>
+      <button onClick={concludeScene} disabled={isLoading || !userText.trim()}>
+    {isLoading ? 'Processing...' : 'Conclude Scene'}
       </button>
       {error && <div className="error">{error}</div>}
     </div>
