@@ -3,6 +3,30 @@
   --card-width: calc(var(--card-height) / 1.15);
 }
 
+.card::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1); 
+  z-index: -1; 
+  border-radius: 8px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 .card {
   width: var(--card-width);
   height: var(--card-height);
@@ -10,7 +34,16 @@
   margin: 0 50px;
   perspective: 1000px;
   overflow: hidden; /* Hide content that overflows the card */
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: calc(0.2s * var(--animation-order, 0));
 }
+
+.card.drawing::before {
+  top: 10px;
+  left: 10px;
+}
+
+
 
 .card-inner {
   position: relative;

@@ -15,6 +15,25 @@ const CardContainer = () => {
   const [error, setError] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
 
+  const [fontNames, setFontNames] = useState([]);
+
+  const useGoogleFont = (fontNames) => {
+    useEffect(() => {
+      fontNames.forEach(fontName => {
+        if (fontName) {
+          const link = document.createElement('link');
+          link.href = `https://fonts.googleapis.com/css?family=${fontName.replace(' ', '+')}&display=swap`;
+          link.rel = 'stylesheet';
+          document.head.appendChild(link);
+        }
+      });
+    }, [fontNames]);
+  };
+
+
+
+
+
   const getCards = async (n = 3) => {
     try {
       const response = await fetch(`${SERVER}/api/cards?n=${n}`);
@@ -110,6 +129,15 @@ const CardContainer = () => {
     getPrefixes();
   }, []);
 
+  useEffect(() => {
+    // Extract unique font names from the cards
+    const uniqueFontNames = [...new Set(cards.map(card => card.fontName))];
+    setFontNames(uniqueFontNames);
+  }, [cards]);
+
+  // Call the useGoogleFont hook with the array of font names
+  useGoogleFont(fontNames);
+
   
   return (
     <div className="card-container">
@@ -125,6 +153,7 @@ const CardContainer = () => {
             fontColor={cardData.fontColor}
             selected={cardData.id === selectedCard}
             setSelectedCard={setSelectedCard}
+            style={{ "--animation-order": index }}
           />
         ))}
       </div>

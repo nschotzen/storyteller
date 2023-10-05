@@ -5,6 +5,13 @@ import './Card.css'; // Import the CSS
 const Card = ({ id, url, title, fontName, fontSize, fontColor, selected, selectCard, setSelectedCard }) => {
   const [isFlipped, setIsFlipped] = useState(true); // initial state is false to show the front side of the card
 
+  const [isDrawing, setIsDrawing] = useState(false);
+
+  const handleDraw = () => {
+    setIsDrawing(true);
+    setTimeout(() => setIsDrawing(false), 400);  // Reset after 400ms
+  };
+
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
@@ -27,8 +34,8 @@ const Card = ({ id, url, title, fontName, fontSize, fontColor, selected, selectC
 
   return (
     <div
-      className={`card${isFlipped ? ' flipped' : ''}${selected ? ' selected' : ''}`}
-      onClick={handleSelect}
+      className={`card${isFlipped ? ' flipped' : ''}${selected ? ' selected' : ''}${isDrawing ? ' drawing' : ''}`}
+      onClick={handleDraw}
       onDoubleClick={handleClick} // double click to select a card
     >
       <div className="card-inner">
