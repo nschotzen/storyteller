@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
+import Chat from './Chat';
 import TextArea from './TextArea';
 import './CardContainer.css'; 
 import './SendButton.css';
@@ -172,6 +173,7 @@ const CardContainer = () => {
         ))}
       </div>
       <TextArea className="send-button" text={userText} setText={setUserText} />
+      <Chat fragmentText={userText} />
       <button onClick={() => sendText(selectedCard)} disabled={isLoading || !userText.trim()}>
         {isLoading ? 'Sending...' : 'Send'}
       </button>

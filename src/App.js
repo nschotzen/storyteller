@@ -1,4 +1,5 @@
 // App.js
+
 import React from 'react';
 import CardContainer from './CardContainer';
 import './App.css';
@@ -6,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <CardContainer /> 
+      <CardContainer />
     </div>
   );
 }
