@@ -15,6 +15,7 @@ const CardContainer = () => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [sessionId, setSessionId] = useState(Math.random().toString(36).substring(2, 15));
 
   const [fontNames, setFontNames] = useState([]);
 
@@ -60,7 +61,7 @@ const CardContainer = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ userText, selectedCard })
+            body: JSON.stringify({ userText, selectedCard, sessionId})
         });
         
         if (!response.ok) {
@@ -107,7 +108,7 @@ const CardContainer = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userText, textureId })
+        body: JSON.stringify({ userText, textureId, sessionId })
       });
       
       if (!response.ok) {
@@ -173,7 +174,7 @@ const CardContainer = () => {
         ))}
       </div>
       <TextArea className="send-button" text={userText} setText={setUserText} />
-      <Chat fragmentText={userText} />
+      <Chat fragmentText={userText}  sessionId={sessionId}/>
       <button onClick={() => sendText(selectedCard)} disabled={isLoading || !userText.trim()}>
         {isLoading ? 'Sending...' : 'Send'}
       </button>

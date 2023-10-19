@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'; // <-- Import useEffect
 import './Chat.css';
 
-function Chat({ fragmentText }) {
+function Chat({ fragmentText, sessionId }) {
   const [userInput, setUserInput] = useState('');
   const [messages, setMessages] = useState([]);
-  const [sessionId, setSessionId] = useState(null);
 
-  useEffect(() => {  // <-- Moved useEffect inside the Chat component
-    // Generate a random sessionId when the component mounts.
-    setSessionId(Math.random().toString(36).substring(2, 15));
-  }, []);
 
   const handleSendMessage = async () => {
     const masterName = "YourMasterName"; // Replace with the desired master name
     // const response = await fetch(`http://localhost:5001/chatWithMaster?masterName=${masterName}&userInput=${userInput}&sessionId=${sessionId}`);
     const response = await fetch(`http://localhost:5001/chatWithMaster?masterName=${masterName}&userInput=${userInput}&sessionId=${sessionId}&fragmentText=${fragmentText}`);
+
+
+
 
     const data = await response.json();
 
