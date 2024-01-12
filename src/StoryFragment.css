@@ -1,3 +1,4 @@
+/* General Styles for Card Container */
 .card-container {
   display: flex;
   flex-direction: column;
@@ -43,32 +44,15 @@
   background-size: 200% 100%;
 }
 
-.prefix:hover, .prefix.selected { /* Apply shimmer effect on hover/selected */
+/* Apply shimmer effect on hover/selected */
+/* .prefix:hover, .prefix.selected { 
   animation: shimmer 1.5s linear infinite;
 }
 
 @keyframes shimmer {
   0% { background-position: -150% 0; }
   100% { background-position: 150% 0; }
-}
-
-/* Fade Effect */
-.prefix {
-  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
-}
-
-/* Torn Paper Effect */
-.prefix {
-  /* background-image: url('../assets/dalle_torn.svg'); */
-  background-repeat: no-repeat;
-  background-size: contain; /* or try specific dimensions */
-  background-position: center; /* adjust as needed */
-  /* Ensure the element is large enough */
-  min-width: 100px; /* adjust as needed */
-  min-height: 100px; /* adjust as needed */
-  /* ... other styles ... */
-}
-
+} */
 
 .prefix:hover {
   background: linear-gradient(to right, #acacac 20%, #ffffff 40%, #acacac 60%);
@@ -81,6 +65,17 @@
   animation: blurEffect 30s forwards; /* Adjust duration as needed */
 }
 
+@keyframes blurEffect {
+  0% { text-shadow: 0em 0em 0.02em rgba(0,0,0,0.75); }
+  100% { text-shadow: 0em 0em 0.3em rgba(0,0,0,0.75); }
+}
+
+/* Fade Effect */
+.prefix {
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+
+
 /* Fading Text Effect */
 .prefix {
   animation: fadeText 3s infinite;
@@ -90,6 +85,7 @@
   0%, 100% { color: #333; }
   50% { color: transparent; }
 }
+
 
 .blur
 {
@@ -118,4 +114,3 @@
 	color:transparent;
 	text-shadow: 0em 0em 0.02em rgba(0,0,0,0.75), -0.2em 0em 0.5em rgba(0,0,0,0.5), 0.2em 0em 0.5em rgba(0,0,0,0.5);
 }
-

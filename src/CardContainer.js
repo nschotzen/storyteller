@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import Chat from './Chat';
 import TextArea from './TextArea';
+import StoryFragmentComponent from './StoryFragment'
 import './CardContainer.css'; 
 import './SendButton.css';
 
@@ -12,10 +13,13 @@ const CardContainer = () => {
   const [prefixes, setPrefixes] = useState([]);
   const [selectedPrefix, setSelectedPrefix] = useState("");
   const [userText, setUserText] = useState("");
+  const [timer, setTimer] = useState(null);
+
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [sessionId, setSessionId] = useState(Math.random().toString(36).substring(2, 15));
+  const [selectedFragment, setSelectedFragment] = useState(null)
 
   const [fontNames, setFontNames] = useState([]);
 
@@ -30,6 +34,19 @@ const CardContainer = () => {
         }
       });
     }, [fontNames]);
+  };
+
+
+  const onSelectFragment = (fragment) => {
+    setSelectedPrefix(fragment);
+    setUserText(fragment); // Set the fragment text in the input box
+    startTimer(30);        // Start the timer
+  };
+  
+
+  const onChangeInput = (event) => {
+    setUserText(event.target.value);
+    // Additional logic for input change
   };
 
 
@@ -48,6 +65,60 @@ const CardContainer = () => {
       console.error('Fetch failed:', error.message);
     }
   };
+
+  const [textShadow, setTextShadow] = useState('');
+
+  
+  const getTextShadow = (time) => {
+    if (time > 27) {
+      return '0em 0em 0.12em rgba(0,0,0,0.75)'; // Least blur
+    } else if (time > 24) {
+      return '0em 0em 0.14em rgba(0,0,0,0.75)';
+    } else if (time > 21) {
+      return '0em 0em 0.16em rgba(0,0,0,0.75)';
+    } else if (time > 18) {
+      return '0em 0em 0.18em rgba(0,0,0,0.75)';
+    } else if (time > 15) {
+      return '0em 0em 0.20em rgba(0,0,0,0.75)';
+    } else if (time > 12) {
+      return '0em 0em 0.21em rgba(0,0,0,0.75)';
+    } else if (time > 9) {
+      return '0em 0em 0.22em rgba(0,0,0,0.75)';
+    } else if (time > 6) {
+      return '0em 0em 0.23em rgba(0,0,0,0.75)';
+    } else if (time > 3) {
+      return '0em 0em 0.24em rgba(0,0,0,0.75)';
+    } else {
+      return '0em 0em 0.25em rgba(0,0,0,0.75)'; // Most blur
+    }
+  };
+  
+  
+
+const startTimer = (duration) => {
+  setTimer(duration);
+  setTextShadow(getTextShadow(duration)); // Set initial text shadow
+
+  const countdown = setInterval(() => {
+    setTimer((prevTime) => {
+      if (prevTime === 1) {
+        clearInterval(countdown);
+        setTextShadow(''); // Clear the text shadow when the timer ends
+        return null;
+      }
+
+      setTextShadow(getTextShadow(prevTime)); // Update text shadow based on remaining time
+      return prevTime - 1;
+    });
+  }, 1000);
+};
+
+  
+  const resetTimer = () => {
+    clearInterval(timer); // Clear existing timer
+    setTimer(null); // Reset timer state
+  };
+  
 
   const concludeScene = async () => {
     if (isLoading) return;  // Avoid sending multiple requests at the same time
@@ -159,20 +230,16 @@ const CardContainer = () => {
           />
         ))}
       </div>
-      <div className="prefix-container">
-        {prefixes.map((prefix, index) => (
-          <button
-            className="prefix"
-            key={index}
-            onClick={() => {
-              setSelectedPrefix(prefix);
-              setUserText(prefix);
-            }}
-          >
-            {prefix}
-          </button>
-        ))}
-      </div>
+      <StoryFragmentComponent 
+        fragments={prefixes}
+        onSelectFragment={onSelectFragment} // You might need to adjust this based on your logic
+        userInput={userText}
+        onChangeInput={(e) => setUserText(e.target.value)}
+        selectedFragment={selectedPrefix}
+        timer={timer}
+        resetTimer={resetTimer}
+        textShadow={textShadow}
+      />
       <TextArea className="send-button" text={userText} setText={setUserText} />
       <Chat fragmentText={userText}  sessionId={sessionId}/>
       <button onClick={() => sendText(selectedCard)} disabled={isLoading || !userText.trim()}>
