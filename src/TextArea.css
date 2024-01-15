@@ -16,6 +16,7 @@
     outline: none; /* Disable outline */
     background: #fdf6e3; /* A warm color for the background */
     transition: box-shadow 0.3s ease;
+    background: rgba(255, 246, 227, 0.8); 
   }
   
   .text-area:focus {

@@ -9,20 +9,24 @@ class StoryFragmentComponent extends React.Component {
         <div className="prefix-container">
           {fragments.map((fragment, index) => (
             <button
-              className={`prefix ${fragment === selectedFragment ? 'selected' : ''}`}
+              className={`prefix embossed-text ${fragment === selectedFragment ? 'selected' : ''}`}
               key={index}
-              onClick={() => onSelectFragment(fragment)}
-              style={{ textShadow: fragment === selectedFragment ? textShadow : '' }}
+              onClick={() => onSelectFragment(fragment.prefix)}
+              style={{ 
+                textShadow: fragment.prefix === selectedFragment ? textShadow : '',
+                fontFamily: fragment.fontName,
+                fontSize: fragment.fontSize
+              }}
             >
-              {fragment}
+              {fragment.prefix}
             </button>
           ))}
         </div>
-        <UserInputBox 
+        {/* <UserInputBox 
           value={userInput}
           onChange={onChangeInput}
         />
-        <TimerDisplay timeLeft={timer} />
+        <TimerDisplay timeLeft={timer} /> */}
       </div>
     );
   }

@@ -10,6 +10,8 @@ const SERVER = 'http://localhost:5001';
 
 const CardContainer = () => {
   const [cards, setCards] = useState([]);
+  const [fade, setFade] = useState(false);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [prefixes, setPrefixes] = useState([]);
   const [selectedPrefix, setSelectedPrefix] = useState("");
   const [userText, setUserText] = useState("");
@@ -35,6 +37,38 @@ const CardContainer = () => {
       });
     }, [fontNames]);
   };
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await fetch(`${SERVER}/api/cards`);
+        if (!response.ok) {
+          throw new Error('HTTP error ' + response.status);
+        }
+        const data = await response.json();
+        setCards(data);
+      } catch (error) {
+        console.error('Fetch failed:', error.message);
+      }
+    };
+
+    fetchBooks();
+  }, []);
+
+
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setFade(true); // Start fade out
+    setTimeout(() => {
+      setFade(false); // Reset fade for next image
+      setCurrentCardIndex((prevIndex) => (prevIndex + 1) % cards.length);
+    }, 1000); // Change book after fade-out, time should match fade effect duration
+  }, 10000); // Change book every 10 seconds
+
+  return () => clearInterval(interval);
+}, [cards, currentCardIndex]);
+
 
 
   const onSelectFragment = (fragment) => {
@@ -211,46 +245,64 @@ const startTimer = (duration) => {
   // Call the useGoogleFont hook with the array of font names
   useGoogleFont(fontNames);
 
+
+  const loadGoogleFont = (fontName) => {
+    const link = document.createElement('link');
+    link.href = `https://fonts.googleapis.com/css?family=${fontName.replace(' ', '+')}:400,700&display=swap`;
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+  };
+  
+  useEffect(() => {
+    prefixes.forEach(prefix => {
+      loadGoogleFont(prefix.fontName);
+    });
+  }, [prefixes]);
   
   return (
     <div className="card-container">
-      <div className="card-wrapper">
-        {cards.map((cardData, index) => (
-          <Card
-            id={cardData.id}
-            key={index}
-            url={cardData.url}
-            fontSize={cardData.fontSize}
-            title={cardData.title}
-            fontName={cardData.fontName}
-            fontColor={cardData.fontColor}
-            selected={cardData.id === selectedCard}
-            setSelectedCard={setSelectedCard}
-            style={{ "--animation-order": index }}
+      {cards.length > 0 && (
+        <div className="book-image-container">
+          {/* Background image that's fading out */}
+          <div
+            className={`book-image fade-out`}
+            style={{ backgroundImage: `url(${SERVER}${cards[currentCardIndex].url})` }}
           />
-        ))}
-      </div>
-      <StoryFragmentComponent 
-        fragments={prefixes}
-        onSelectFragment={onSelectFragment} // You might need to adjust this based on your logic
-        userInput={userText}
-        onChangeInput={(e) => setUserText(e.target.value)}
-        selectedFragment={selectedPrefix}
-        timer={timer}
-        resetTimer={resetTimer}
-        textShadow={textShadow}
-      />
-      <TextArea className="send-button" text={userText} setText={setUserText} />
-      <Chat fragmentText={userText}  sessionId={sessionId}/>
+          {/* Background image that's fading in */}
+          <div
+            className={`book-image fade-in`}
+            style={{ backgroundImage: `url(${SERVER}${cards[(currentCardIndex + 1) % cards.length].url})` }}
+          />
+          {/* Text content over the images */}
+          <div className="overlay-content">
+            <StoryFragmentComponent
+              fragments={prefixes}
+              onSelectFragment={onSelectFragment}
+              userInput={userText}
+              onChangeInput={(e) => setUserText(e.target.value)}
+              selectedFragment={selectedPrefix}
+              resetTimer={resetTimer}
+              textShadow={textShadow}
+            />
+            <div className="text-area-container">
+            <TextArea className="text-area" text={userText} setText={setUserText} />
+          </div>
+          </div>
+        </div>
+      )}
+    
+      <Chat fragmentText={userText} sessionId={sessionId} />
       <button onClick={() => sendText(selectedCard)} disabled={isLoading || !userText.trim()}>
         {isLoading ? 'Sending...' : 'Send'}
       </button>
       <button onClick={concludeScene} disabled={isLoading || !userText.trim()}>
-    {isLoading ? 'Processing...' : 'Conclude Scene'}
+        {isLoading ? 'Processing...' : 'Conclude Scene'}
       </button>
       {error && <div className="error">{error}</div>}
     </div>
   );
+  
+  
 };
 
 export default CardContainer;
