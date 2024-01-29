@@ -259,24 +259,26 @@ const startTimer = (duration) => {
     });
   }, [prefixes]);
   
+  console.log(prefixes); 
   return (
     <div className="card-container">
       {cards.length > 0 && (
         <div className="book-image-container">
-          {/* Background image that's fading out */}
           <div
             className={`book-image fade-out`}
             style={{ backgroundImage: `url(${SERVER}${cards[currentCardIndex].url})` }}
           />
-          {/* Background image that's fading in */}
           <div
             className={`book-image fade-in`}
             style={{ backgroundImage: `url(${SERVER}${cards[(currentCardIndex + 1) % cards.length].url})` }}
           />
-          {/* Text content over the images */}
           <div className="overlay-content">
+          {Array.isArray(prefixes) && (
+          <>
+            <div className="left-prefix-container">
+              
             <StoryFragmentComponent
-              fragments={prefixes}
+              fragments={prefixes.slice(0,3)}
               onSelectFragment={onSelectFragment}
               userInput={userText}
               onChangeInput={(e) => setUserText(e.target.value)}
@@ -284,23 +286,39 @@ const startTimer = (duration) => {
               resetTimer={resetTimer}
               textShadow={textShadow}
             />
+            </div>
+            <div className="right-prefix-container">
+            <StoryFragmentComponent
+              fragments={prefixes.slice(3)}
+              onSelectFragment={onSelectFragment}
+              userInput={userText}
+              onChangeInput={(e) => setUserText(e.target.value)}
+              selectedFragment={selectedPrefix}
+              resetTimer={resetTimer}
+              textShadow={textShadow}
+            />
+            </div>
+            </>
+        )}
             <div className="text-area-container">
-            <TextArea className="text-area" text={userText} setText={setUserText} />
-          </div>
+              <TextArea className="text-area" text={userText} setText={setUserText} />
+              <button className="send-button" onClick={() => sendText(selectedCard)} disabled={isLoading || !userText.trim()}>
+                {isLoading ? 'Sending...' : 'Send'}
+              </button>
+              <button onClick={concludeScene} disabled={isLoading || !userText.trim()}>
+                {isLoading ? 'Processing...' : 'Conclude Scene'}
+            </button>
+            </div>
           </div>
         </div>
       )}
-    
+  
       <Chat fragmentText={userText} sessionId={sessionId} />
-      <button onClick={() => sendText(selectedCard)} disabled={isLoading || !userText.trim()}>
-        {isLoading ? 'Sending...' : 'Send'}
-      </button>
-      <button onClick={concludeScene} disabled={isLoading || !userText.trim()}>
-        {isLoading ? 'Processing...' : 'Conclude Scene'}
-      </button>
+      
       {error && <div className="error">{error}</div>}
     </div>
   );
+  
   
   
 };
