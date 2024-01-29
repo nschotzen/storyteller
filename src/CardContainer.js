@@ -22,6 +22,7 @@ const CardContainer = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [sessionId, setSessionId] = useState(Math.random().toString(36).substring(2, 15));
   const [selectedFragment, setSelectedFragment] = useState(null)
+  const [previousFragment, setPreviousFragment] = useState("");
 
   const [fontNames, setFontNames] = useState([]);
 
@@ -73,8 +74,14 @@ useEffect(() => {
 
   const onSelectFragment = (fragment) => {
     setSelectedPrefix(fragment);
-    setUserText(fragment); // Set the fragment text in the input box
-    startTimer(30);        // Start the timer
+
+    const newText = previousFragment
+      ? userText.replace(previousFragment, fragment)
+      : userText + fragment;
+
+    setUserText(newText);
+    setPreviousFragment(fragment); // Update the previous fragment
+    startTimer(30); // Start the timer
   };
   
 
@@ -259,7 +266,7 @@ const startTimer = (duration) => {
     });
   }, [prefixes]);
   
-  console.log(prefixes); 
+  console.log(JSON.stringify(prefixes)); 
   return (
     <div className="card-container">
       {cards.length > 0 && (
